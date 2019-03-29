@@ -1,4 +1,4 @@
-package org.apache.ibatis.test;
+package net.btt.traffic.bus.common.util.ibatis;
 
 import org.apache.ibatis.executor.keygen.KeyGenerator;
 import org.apache.ibatis.executor.keygen.NoKeyGenerator;
@@ -8,9 +8,7 @@ import org.apache.ibatis.scripting.xmltags.XMLLanguageDriver;
 import org.apache.ibatis.session.Configuration;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MappedStatementComm {
 
@@ -53,13 +51,13 @@ public class MappedStatementComm {
             configuration.addMappedStatement(mappedStatement);
     }
 
-    private SqlSource createSqlSource(Class clazz,SelectType type){
+    private SqlSource createSqlSource(Class clazz, SelectType type){
         SqlSource sqlSouce = sqlSourceComm.createSqlSouce(clazz,type);
         return sqlSouce;
     }
 
-    private MappedStatement defaultMappedStatement(String id,SqlSource sqlSource,Class resultClass){
-        return createMappedStatement(id,sqlSource,StatementType.PREPARED,SqlCommandType.SELECT
+    private MappedStatement defaultMappedStatement(String id, SqlSource sqlSource, Class resultClass){
+        return createMappedStatement(id,sqlSource, StatementType.PREPARED, SqlCommandType.SELECT
         ,null,null,null,null,null,resultClass
         ,null,false,true,false
         , new NoKeyGenerator(),null,null,null,new XMLLanguageDriver(),null);

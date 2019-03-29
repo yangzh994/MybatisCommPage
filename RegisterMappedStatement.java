@@ -1,4 +1,4 @@
-package org.apache.ibatis.test;
+package net.btt.traffic.bus.common.util.ibatis;
 
 import org.apache.ibatis.session.Configuration;
 

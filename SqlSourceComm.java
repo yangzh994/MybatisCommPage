@@ -1,12 +1,13 @@
-package org.apache.ibatis.test;
+package net.btt.traffic.bus.common.util.ibatis;
 
 
-import org.apache.ibatis.executor.ExecutorException;
-import org.apache.ibatis.executor.statement.CallableStatementHandler;
-import org.apache.ibatis.executor.statement.PreparedStatementHandler;
-import org.apache.ibatis.executor.statement.SimpleStatementHandler;
+import net.btt.traffic.bus.common.exception.NoSuchBeanFieldException;
+import net.btt.traffic.bus.common.exception.NoSuchTableNameException;
+import net.btt.traffic.bus.entity.generate.BasicDiscountRule;
+import net.btt.traffic.bus.entity.generate.SpecialDiscountRule;
+import net.btt.traffic.bus.entity.generate.TransferDiscountRule;
+import net.btt.traffic.bus.entity.generate.VoiceBroadcastRule;
 import org.apache.ibatis.mapping.SqlSource;
-import org.apache.ibatis.pojo.User;
 import org.apache.ibatis.scripting.xmltags.*;
 import org.apache.ibatis.session.Configuration;
 
@@ -80,7 +81,9 @@ public class SqlSourceComm {
 
     private void initDbTable() {
         dbTableNameMap.put(BasicDiscountRule.class, "basic_discount_rule");
-        dbTableNameMap.put(User.class, "user");
+        dbTableNameMap.put(SpecialDiscountRule.class, "special_discount_rule");
+        dbTableNameMap.put(VoiceBroadcastRule.class, "voice_broadcast_rule");
+        dbTableNameMap.put(TransferDiscountRule.class, "transfer_discount_rule");
     }
 
     private void initExclude() {
@@ -103,7 +106,7 @@ public class SqlSourceComm {
         return null;
     }
 
-    public SqlSource createSqlSouce(Class clazz,SelectType type) {
+    public SqlSource createSqlSouce(Class clazz, SelectType type) {
         SqlSource sqlSource;
         switch (type) {
             case PAGE:
